@@ -1,0 +1,98 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #7cbac8;
+        }
+        header {
+            background-color: #71a7ae;
+            color: rgb(104, 176, 184);
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgb(102, 182, 172);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2, p {
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: disc;
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>About Us</h1>
+</header>
+
+<div class="container">
+    <h2>Welcome to Recipe Generator</h2>
+    <p>Your go-to platform for discovering delicious recipes tailored just for you! Whether you're a culinary enthusiast, a busy home cook, or simply looking for meal inspiration, our smart recipe recommendation system is designed to help you find recipes that match your taste, dietary preferences, and available ingredients.</p>
+
+    <h2>Our Mission</h2>
+    <p>At <strong>Recipe Generator</strong>, we believe that everyone deserves to enjoy great food, regardless of dietary restrictions, time constraints, or cooking skills. Our mission is to make meal planning and cooking simple, personalized, and enjoyable by leveraging the power of artificial intelligence and natural language processing. We aim to provide you with personalized recipe suggestions, helping you discover new dishes, explore cuisines, and expand your cooking repertoire.</p>
+
+    <h2>Key Features</h2>
+    <ul>
+        <li><strong>Personalized Recommendations</strong>: Get recipe suggestions based on your preferences, including dietary needs, ingredients you have on hand, and your favorite cuisines.</li>
+        <li><strong>Favorites & History</strong>: Save your favorite recipes for quick access and keep track of what you've searched for to revisit any recipe you've tried or liked.</li>
+        <li><strong>Nutritional Insights</strong>: Stay informed about the nutritional value of the recipes you choose, helping you maintain a balanced diet.</li>
+        <li><strong>Interactive Dashboard</strong>: Gain insights into your cooking habits with visualizations, such as ingredient popularity and recipe trends, to inspire your next meal.</li>
+    </ul>
+
+    <h2>How It Works</h2>
+    <p>Our platform uses advanced AI technology to analyze user preferences, available ingredients, and nutritional requirements to generate recipe recommendations. Powered by the Spoonacular API, we offer an extensive collection of recipes from around the world, ensuring that there's something for everyone.</p>
+    <ol>
+        <li><strong>Sign Up</strong>: Create an account and fill out your food preferences.</li>
+        <li><strong>Search Recipes</strong>: Enter the ingredients you have or simply browse trending recipes.</li>
+        <li><strong>Save Your Favorites</strong>: Add recipes to your favorites list and access them anytime on your profile page.</li>
+        <li><strong>Get Cooking</strong>: Follow step-by-step instructions, complete with nutritional details and preparation times.</li>
+    </ol>
+
+    <h2>Our Story</h2>
+    <p><strong>Recipe Generator</strong> was founded with a simple idea in mind – to take the stress out of meal planning and inspire people to cook with confidence. We understand that finding the perfect recipe can be challenging, especially with dietary restrictions or specific ingredient availability. That's why we created a smart platform that adapts to your needs, helping you discover delicious meals that fit your lifestyle.</p>
+
+    <h2>Join Us</h2>
+    <p>Join our growing community of food lovers and take the hassle out of meal planning. Whether you're looking for quick weekday meals, indulgent weekend feasts, or healthy dishes to match your dietary goals, <strong>[Your Website Name]</strong> has got you covered!</p>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+{% endblock %}

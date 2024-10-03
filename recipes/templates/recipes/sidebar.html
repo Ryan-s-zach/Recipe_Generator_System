@@ -1,0 +1,10 @@
+<!-- templates/recipes/sidebar.html -->
+{% if user.is_authenticated %}
+<div id="sidebar" class="sidebar">
+    <ul>
+        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+{% endif %}

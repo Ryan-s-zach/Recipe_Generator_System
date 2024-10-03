@@ -1,0 +1,32 @@
+{% extends 'recipes/base.html' %}
+{% block content %}
+<div class="container">
+    <h2>User Profile</h2>
+    
+    <!-- Profile Update Form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        <button type="submit" class="btn btn-primary" name="update_profile">Update Profile</button>  <!-- Profile form button -->
+    </form>
+
+    <hr>
+
+    <!-- Password Change Form -->
+    <h3>Change Password</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ password_form.as_p }}
+        <button type="submit" class="btn btn-danger" name="change_password">Change Password</button>  <!-- Password form button -->
+    </form>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

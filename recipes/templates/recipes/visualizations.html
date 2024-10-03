@@ -1,0 +1,190 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Ingredient Popularity{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .chart-container canvas {
+            max-width: 500px;
+            max-height: 400px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ingredient Popularity</h1>
+        <canvas id="ingredientChart"></canvas>
+    </div>
+
+    <div class="container">
+        <h1>Most Popular Recipes</h1>
+        <div class="chart-container">
+            <canvas id="recipeChart"></canvas>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Health Scores of Recipes</h1>
+        <div class="chart-container">
+            <canvas id="healthScoreChart"></canvas>
+        </div>
+    </div>
+    <script>
+        // Get data from the Django view (passed as JSON)
+        var ingredientNames = {{ ingredient_names|safe }};
+        var searchCounts = {{ search_counts|safe }};
+
+        // Create a bar chart using Chart.js
+        var ctx = document.getElementById('ingredientChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ingredientNames,  // X-axis labels
+                datasets: [{
+                    label: 'Search Count',
+                    data: searchCounts,  // Y-axis data
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',  // Bar color
+                    borderColor: 'rgba(54, 162, 235, 1)',  // Border color
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true  // Ensure the Y-axis starts at 0
+                    }
+                }
+            }
+        });
+
+         // Most Popular Recipes Pie Chart
+         var recipeTitles = {{ recipe_titles|safe }};
+        var favoriteCounts = {{ favorite_counts|safe }};
+
+        var ctx2 = document.getElementById('recipeChart').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: recipeTitles,
+                datasets: [{
+                    data: favoriteCounts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(199, 199, 199, 0.6)',
+                        'rgba(83, 102, 255, 0.6)',
+                        'rgba(143, 199, 64, 0.6)',
+                        'rgba(60, 60, 60, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(199, 199, 199, 1)',
+                        'rgba(83, 102, 255, 1)',
+                        'rgba(143, 199, 64, 1)',
+                        'rgba(60, 60, 60, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+       // Health Scores Histogram
+    var healthScores = {{ health_scores|safe }};
+
+var ctx3 = document.getElementById('healthScoreChart').getContext('2d');
+var chart3 = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '91-100'],
+        datasets: [{
+            label: 'Number of Recipes',
+            data: healthScores,
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.raw + ' recipes';
+                    }
+                }
+            },
+            title: {
+                display: true,
+                text: 'Distribution of Health Scores for Favorited Recipes',
+                font: {
+                    size: 18
+                }
+            },
+            subtitle: {
+                display: true,
+                text: 'This histogram shows the number of recipes in each health score range.',
+                font: {
+                    size: 14
+                }
+            }
+        },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Health Score Ranges',
+                    font: {
+                        size: 14
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Number of Recipes',
+                    font: {
+                        size: 14
+                    }
+                },
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+    </script>
+</body>
+</html>
+{% endblock %}

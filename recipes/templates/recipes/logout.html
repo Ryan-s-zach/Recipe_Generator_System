@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'recipes/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>You've been logged out</h1>
+        <a href="{% url 'login' %}">Login Again</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'recipes/base.html' %}
+{% load static %} <!-- Add this line to load static files -->
+
+{% block title %}Search Recipes{% endblock %}
+
+{% block content %}
+    <div class="container" style="background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 10px; max-width: 600px; margin: 50px auto;">
+        <h1>Search for Recipes</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="ingredient">Enter ingredients (comma separated):</label>
+            <input type="text" id="ingredient" name="ingredient" placeholder="e.g., tomato, cheese, chicken">
+            <button type="submit">Search</button>
+        </form>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Inline CSS for background image -->
+    <style>
+        body {
+            background-image: url("{% static 'recipes/img2.jpg' %}"); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+{% endblock %}

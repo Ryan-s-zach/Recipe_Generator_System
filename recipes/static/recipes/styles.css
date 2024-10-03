@@ -1,0 +1,316 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #40658c;
+    color: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #445e79;
+    border-radius: 5px;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero {
+    background-image: url("img1.jpg"); /* Adjust the image path */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Optional: Adds a parallax scrolling effect */
+    padding: 100px 0; /* Adds padding for better spacing inside the section */
+    color: white; /* Sets text color to white for better readability */
+    text-align: center; /* Centers the text horizontally */
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.features {
+    padding: 40px 0;
+    background-color: #7b95b0;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.feature-item {
+    background-color: #557891;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(69, 205, 192, 0.1);
+    text-align: center;
+    flex: 1;
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1em;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #467491;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #e64a19;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar .nav-links li a:hover {
+    color: #ff5722;
+}
+
+.footer {
+    background-color: #6b9ebb;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    margin: 0px;
+}
+
+/* Card Style for Search Results */
+.recipe-details {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.recipe-details img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.recipe-summary {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #ff5722;
+    margin-top: 10px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the text */
+    left: 50%;
+    margin-left: -150px;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0s linear 0.3s; /* Delays visibility hiding to ensure smooth fade-out */
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+
+
+/* Sidebar styling */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    left: -250px; /* Hidden by default */
+    top: 0;
+    background-color: rgba(17, 17, 17, 0.8); /* 90% opaque black background */
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 2000;
+}
+
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.sidebar.active {
+    left: 0; /* Show sidebar when active */
+}
+
+/* Menu icon styles */
+.menu-icon {
+    font-size: 24px; /* Icon size */
+    cursor: pointer; /* Cursor changes to pointer */
+    z-index: 1010; /* Higher than sidebar for accessibility */
+    position: relative; /* Keep menu icon position */
+}
+
+.alert-danger {
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.error-messages {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+

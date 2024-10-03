@@ -1,0 +1,176 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}My Favorite Recipes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>My Favorite Recipes</h1>
+    
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <ul class="recipe-list">
+        {% for favorite in favorites %}
+            <li class="recipe-item">
+                <div class="recipe-header">
+                    <h2>{{ favorite.recipe_title }}</h2>
+                    <img src="{{ favorite.recipe_image }}" alt="{{ favorite.recipe_title }}" class="recipe-image">
+                    <form method="post" action="{% url 'remove_from_favorites' favorite.recipe_id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                    </form>
+                </div>
+                <div class="recipe-details">
+                    <div class="recipe-section">
+                        <h3>Ingredients:</h3>
+                        <ul class="ingredients-list">
+                            {% for ingredient in favorite.ingredients_list %}
+                                <li>
+                                    {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
+                                    {% if ingredient.meta %}
+                                        ({{ ingredient.meta|join:", " }})
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="recipe-section">
+                        <h3>Instructions:</h3>
+                        <p>{{ favorite.instructions }}</p>
+                    </div>
+                    <div class="recipe-section">
+                        <h3>Cooking Time:</h3>
+                        <p><i class="fas fa-clock"></i> {{ favorite.cooking_time }} minutes</p>
+                    </div>
+                    <div class="recipe-section">
+                        <h3>Servings:</h3>
+                        <p><i class="fas fa-users"></i> {{ favorite.servings }} servings</p>
+                    </div>
+                    <div class="recipe-section">
+                        <h3>Health Score: 
+                            <span class="tooltip">{{ favorite.health_score }}
+                                <span class="tooltiptext">
+                                    The health score is a numerical value that indicates the overall nutritional quality of a recipe. It ranges from 0 to 100, with higher scores representing healthier recipes.
+                                </span>
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Inline CSS -->
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .alert {
+        margin-bottom: 20px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .recipe-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .recipe-item {
+        display: flex;
+        flex-direction: column;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 15px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .recipe-item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .recipe-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .recipe-header h2 {
+        font-size: 1.75rem;
+        color: #333;
+        margin: 0;
+        flex: 1;
+    }
+
+    .recipe-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-left: 20px;
+        flex-shrink: 0;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+        padding: 10px 15px;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    .recipe-details {
+        margin-top: 20px;
+    }
+
+    .recipe-section {
+        margin-bottom: 20px;
+    }
+
+    .ingredients-list {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .recipe-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .recipe-image {
+            margin-left: 0;
+            margin-top: 15px;
+            width: 100%;
+            height: auto;
+        }
+    }
+</style>
+{% endblock %}
